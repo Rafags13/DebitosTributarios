@@ -2,6 +2,7 @@
   <Project Path="DebitosTributarios.Application/DebitosTributarios.Application.csproj" Id="7f603dfd-bdc3-4b2e-bd48-6a7601fa39fe" />
   <Project Path="DebitosTributarios.Domain/DebitosTributarios.Domain.csproj" />
   <Project Path="DebitosTributarios.Infrastructure/DebitosTributarios.Infrastructure.csproj" />
+  <Project Path="DebitosTributarios.Tests/DebitosTributarios.Tests.csproj" Id="21716d35-2977-49ea-aa05-d56023bd6528" />
   <Project Path="DebitosTributarios.WebApi/DebitosTributarios.WebApi.csproj" />
   <Project Path="docker-compose.dcproj">
     <Build />

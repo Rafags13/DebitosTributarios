@@ -1,13 +1,14 @@
 ﻿using DebitosTributarios.Domain.DTOs.Contribuinte.Request;
 using DebitosTributarios.Domain.Errors.Common;
 using DebitosTributarios.Domain.Errors.Contribuinte;
+using DebitosTributarios.Domain.Helpers;
 using DebitosTributarios.Domain.Interfaces.UoW;
 using DebitosTributarios.Domain.Interfaces.UseCases.Contribuinte.Commands;
 using OneOf;
 
 namespace DebitosTributarios.Application.UseCases.Contribuinte.Commands
 {
-    internal sealed class CriarContribuinteUseCase(IUnitOfWork unitOfWork) : ICriarContribuinteUseCase
+    public sealed class CriarContribuinteUseCase(IUnitOfWork unitOfWork) : ICriarContribuinteUseCase
     {
         public async Task<OneOf<bool, BaseError>> CriarAsync(RequestCreateContribuinteDTO content, CancellationToken ct = default)
         {
@@ -24,6 +25,9 @@ namespace DebitosTributarios.Application.UseCases.Contribuinte.Commands
         {
             if (string.IsNullOrEmpty(content.CpfCnpj))
                 return new CpfCnpjEhObrigatorioError();
+
+            if(!ValidateCpfCnpjHelper.ValidarCpfCnpj(content.CpfCnpj))
+                return new CpfCnpjNaoEhValidoError();
 
             if (string.IsNullOrEmpty(content.Nome))
                 return new NomeEhObrigatorioError();
