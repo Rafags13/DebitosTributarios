@@ -1,0 +1,13 @@
+services:
+  debitostributarios.webapi:
+    image: ${DOCKER_REGISTRY-}debitostributarioswebapi
+    build:
+      context: .
+      dockerfile: DebitosTributarios.WebApi/Dockerfile
+  db:
+    image: postgres:18.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: G7!kPz@91Lm#Q2vX
+    ports:
+      - "5432:5432"
